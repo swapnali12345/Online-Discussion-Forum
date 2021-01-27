@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Register</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		body {
+			color: #fff;
+			background: #3598dc;
+		}
+
+		.form-control {
+			min-height: 41px;
+			background: #f2f2f2;
+			box-shadow: none !important;
+			border: transparent;
+		}
+
+		.form-control:focus {
+			background: #e2e2e2;
+		}
+
+		.form-control,
+		.btn {
+			border-radius: 20px;
+		}
+
+		.login-form {
+			width: 550px;
+			margin: 30px auto;
+			text-align: center;
+		}
+
+		.login-form h2 {
+			margin: 10px 0 10px;
+		}
+
+		.login-form form {
+			color: #7a7a7a;
+			border-radius: 30px;
+			margin-bottom: 15px;
+			background: #fff;
+			box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+			padding: 50px;
+		}
+
+		.login-form .btn {
+			font-size: 13px;
+			font-weight: bold;
+			background: #3598dc;
+			border: none;
+			outline: none !important;
+		}
+
+		.login-form .btn:hover,
+		.login-form .btn:focus {
+			background: #2389cd;
+		}
+
+		.login-form a {
+			color: #fff;
+			text-decoration: underline;
+		}
+
+		.login-form a:hover {
+			text-decoration: none;
+		}
+
+		.login-form form a {
+			color: #7a7a7a;
+			text-decoration: none;
+		}
+
+		.login-form form a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- <div th:insert="fragments/no_user_navbar.html"> </div> -->
+	<br>
+	<br>
+	<br>
+	<div class="login-form">
+		<div class="row">
+			<div class="col-lg-10 col-xl-9 mx-auto">
+				<div class="card card-signin flex-row my-5">
+					<div class="card-img-left d-none d-md-flex">
+						<!-- Background image for card set in CSS! -->
+					</div>
+					<div class="form-group">
+						<h5 class="card-title text-center">Register</h5>
+						<form class="form-signin" th:action="@{/signup}" th:object="${user}" method="post">
+							<div class="form-label-group">
+								<label for="inputName">Name</label>
+								<input type="text" th:field="*{name}" id="inputName" class="form-control"
+									placeholder="Name" required autofocus>
+
+							</div>
+
+							<div class="form-group">
+								<label for="inputEmail">Email address</label>
+								<input type="email" th:field="*{email}" id="inputEmail" class="form-control"
+									placeholder="Email address" required>
+
+							</div>
+
+
+							<div class="form-group">
+								<label for="inputPassword">Password</label>
+								<input type="password" th:field="*{password}" id="inputPassword" class="form-control"
+									placeholder="Password" required>
+
+							</div>
+
+							<!-- <div class="form-label-group">
+	                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
+	                <label for="inputConfirmPassword">Confirm password</label>
+	              </div> -->
+
+							<button class="btn btn-lg btn-primary btn-block text-uppercase"
+								type="submit">Register</button>
+							<div>
+								<br>
+								<span th:utext="${successMessage}"></span>
+							</div>
+							<div class="alert alert-danger alert-dismissible col-sm-12"
+								th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
+								<ul th:each="data : ${bindingResult.getAllErrors()}">
+									<li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+								</ul>
+							</div>
+							<a class="d-block text-center mt-2 small" href="signin">Sign In</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

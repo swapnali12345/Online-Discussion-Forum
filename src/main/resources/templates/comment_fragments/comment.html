@@ -1,0 +1,11 @@
+<div class="card card-signin flex-row my-5 mainComment" th:each="comment: ${discussion.comments}">
+	<div class="card-body">
+		<div class="row">
+			<h6 th:text="|${comment.user.name} : ${comment.createdOn}|">Name : </h6>
+		</div>
+		<p th:text="${comment.commentText}">comment</p>
+		<p  align="right" ><button type="button" class="btn btn-outline-primary text-uppercase" data-toggle="modal" th:data-target="|#myModal${comment.commentId}|">Reply</button></p>
+		<div th:insert="comment_fragments/reply_comment.html"> </div>
+	</div>
+	<div th:insert="comment_fragments/comment_modal.html"> </div>
+</div>

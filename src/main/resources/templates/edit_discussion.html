@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/add_discussion.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <title>Add Discussions</title>
+  </head>
+  <body>
+    <div th:insert="fragments/user_navbar.html"> </div>
+    <br>
+    <br>
+    <br>
+	  <div class="container">
+	    <div class="row">
+	      <div class="col-lg-10 col-xl-9 mx-auto">
+	        <div class="card card-signin flex-row my-5">
+	          <div class="card-body">
+	            <h5 class="card-title text-center">Discussion</h5>
+	            <form class="form-signin" th:action="@{/editPost}" method="post">
+	              <div class="form-label-group">
+	                <input type="text" th:field="${post.subject}" id="inputSubject" class="form-control" th:value="*{subject}" required autofocus>
+	                <label for="inputSubject">Subject</label>
+	              </div>
+	
+	              <div class="form-label-group">
+	                <textarea type="text" th:field="${post.description}" id="inputDescription" class="form-control textareaconfigur" th:value="*{subject}" style="height:150px;" required></textarea>
+	              </div>
+	              
+	              <div class="form-label-group">
+	                <input type="text" th:field="${post.tags}" id="inputTags" class="form-control" th:value="*{subject}" required>
+	                <label for="inputTags">Tags</label>
+	              </div>
+	              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Post</button>
+	              <br>
+	              <div class="alert alert-danger alert-dismissible col-sm-12"
+					th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
+					<ul th:each="data : ${bindingResult.getAllErrors()}">
+						<li th:text="${data.getDefaultMessage()}"></li>
+					</ul>
+				</div>
+	            </form>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+  </body>
+</html>

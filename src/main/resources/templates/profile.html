@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/add_discussion.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<title>Profile
+	</title>
+</head>
+
+<body>
+	<div th:insert="fragments/user_navbar.html"> </div>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+	</div>
+	<div class="container">
+		<h6> Configure Posts</h6>
+		<table class="table table-responsive-md">
+			<thead class="thead-dark">
+				<tr>
+					<th>Subject</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="post: ${user.posts}">
+					<td th:text="${post.subject}"></td>
+					<td>
+						<button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect"
+							th:attr='onclick=|window.location.href = "editPost?postId=${post.postId}";|'>Edit</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect"
+							th:attr='onclick=|window.location.href = "deletepost?postId=${post.postId}";|'>Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+</body>
+
+</html>

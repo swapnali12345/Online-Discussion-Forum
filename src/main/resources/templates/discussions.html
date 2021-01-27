@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<!-- <link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" href="css/add_discussion.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<title>Discussions
+	</title>
+	<script type="text/javascript">
+		document.getElementById("newCommentPostId").value = "8";
+	</script>
+</head>
+
+<body>
+	<div th:insert="fragments/user_navbar.html"> </div>
+	<br>
+	<br>
+	<br>
+	<div class="d-flex bd-highlight">
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight">user</div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight">date</div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight">subject</div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight"> </div>
+		<div class="p-2 bd-highlight">comments</div>
+	</div>
+	<hr>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 col-sm-10 col-xl-9">
+				<div class="card card-signin flex-row my-5" th:each="discussion: ${discussions.content}">
+					<div class="card-body">
+						<div style="display: flex; justify-content: space-between">
+							<a th:href="|userProfile?userId=${discussion.user.userId}|">
+								<h6 th:text="${discussion.user.Name}">Name</h6>
+							</a>
+							<a th:href="|userProfile?userId=${discussion.user.userId}|">
+								<h6 th:text="${discussion.createdOn}">Date</h6>
+							</a>
+							<a th:href="|post/${discussion.postId}|">
+								<h6 class="card-title text-center" th:text="${discussion.subject}">Subject</h6>
+							</a>
+							<div style="display: flex; justify-content: space-between">
+								<div th:if="${#lists.size(discussion.comments)} == 0">
+									<a th:text="|No Comments|" th:href="|post/${discussion.postId}|">Comments</a>
+		                		</div>
+		                    		<div th:if="${#lists.size(discussion.comments)} > 0">
+		                    			<a th:text="|Comment: ${#lists.size(discussion.comments)}|" th:href="|post/${discussion.postId}|">Comments</a>
+		                    		</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
